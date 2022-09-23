@@ -1,28 +1,42 @@
 from random import randint
 
-nb_sims = int(input("Choose the number of simulations "))
-while nb_sims <= 0:
-    nb_sims = int(input("Choose a positive number of simulations.. "))
 
-nb_dice = int(input("Choose the number of dice "))
-while nb_dice <= 0:
-    nb_dice = int(input("Choose a positive number of dice.. "))
+def fetch_user_input():
+    nb_sims = int(input("Choose the number of simulations "))
+    while nb_sims <= 0:
+        nb_sims = int(input("Choose a positive number of simulations.. "))
 
-nb_of_total_throws = 0
-nb_of_throws = 0
+    nb_dice = int(input("Choose the number of dice "))
+    while nb_dice <= 0:
+        nb_dice = int(input("Choose a positive number of dice.. "))
+    return nb_sims, nb_dice
 
-for posbl_roll in range(1 * nb_dice, (6 * nb_dice) + 1):
-    for sim in range(nb_sims):
-        while True:
-            dice_roll_sum = 0
-            for NBD in range(1, nb_dice + 1):
-                dice_roll_sum += randint(1, 6)
-            nb_of_throws += 1
-            if dice_roll_sum == posbl_roll:
-                break
-        nb_of_total_throws += nb_of_throws
-        nb_of_throws = 0
-    av_num_trws = nb_of_total_throws / nb_sims
-    nb_of_total_throws = 0
-    print("The average number of throws required to have a score of", posbl_roll, "is",
-          av_num_trws)
+
+def throw_n_dice(nb_dice):
+    dice_roll_sum = 0
+    for NBD in range(1, nb_dice + 1):
+        dice_roll_sum += randint(1, 6)
+    return dice_roll_sum
+
+
+def dice_master(nb_sims, nb_dice):
+    for posbl_roll in range(1 * nb_dice, (6 * nb_dice) + 1):
+        nb_of_total_throws = 0
+        for sim in range(nb_sims):
+            nb_of_throws = 0
+            while True:
+                nb_of_throws += 1
+                if throw_n_dice(nb_dice) == posbl_roll:
+                    break
+            nb_of_total_throws += nb_of_throws
+        av_num_trws = nb_of_total_throws / nb_sims
+        print("The average number of throws required to have a score of", posbl_roll, "is",
+              av_num_trws)
+
+
+def start():
+    nb_sim, nb_dice = fetch_user_input()
+    dice_master(nb_sim, nb_dice)
+
+
+start()
