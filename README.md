@@ -1,4 +1,4 @@
 # Dices_Simulations
 This code, written in python, simulates dices throws.
 
-When I wrote this programme, only God and I understood how it worked, now, only God knows.
+Why spend a couple minutes calculating dice probabilities when you can make your computer throw a couple dice millions of times and see many throws are needed to obtain every possible score ?
