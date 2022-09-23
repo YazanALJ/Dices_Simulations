@@ -1,7 +1,4 @@
-import random
 from random import randint
-
-random.seed(10)
 
 
 def fetch_user_input():
