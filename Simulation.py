@@ -19,16 +19,20 @@ def throw_n_dice(nb_dice):
     return dice_roll_sum
 
 
+def throws_until_obtainement(nb_dice, desired_roll):
+    nb_of_throws = 0
+    while True:
+        nb_of_throws += 1
+        if throw_n_dice(nb_dice) == desired_roll:
+            break
+    return nb_of_throws
+
+
 def dice_master(nb_sims, nb_dice):
     for posbl_roll in range(1 * nb_dice, (6 * nb_dice) + 1):
         nb_of_total_throws = 0
         for sim in range(nb_sims):
-            nb_of_throws = 0
-            while True:
-                nb_of_throws += 1
-                if throw_n_dice(nb_dice) == posbl_roll:
-                    break
-            nb_of_total_throws += nb_of_throws
+            nb_of_total_throws += throws_until_obtainement(nb_dice, posbl_roll)
         av_num_trws = nb_of_total_throws / nb_sims
         print(f"The average number of throws required to have a score of {posbl_roll} is "
               f"{av_num_trws:.1f} which corresponds to {(1 / av_num_trws):.10%}")
