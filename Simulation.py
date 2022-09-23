@@ -1,4 +1,7 @@
+import random
 from random import randint
+
+random.seed(10)
 
 
 def fetch_user_input():
@@ -30,8 +33,8 @@ def dice_master(nb_sims, nb_dice):
                     break
             nb_of_total_throws += nb_of_throws
         av_num_trws = nb_of_total_throws / nb_sims
-        print("The average number of throws required to have a score of", posbl_roll, "is",
-              av_num_trws)
+        print(f"The average number of throws required to have a score of {posbl_roll} is "
+              f"{av_num_trws:.1f} which corresponds to {(1 / av_num_trws):.10%}")
 
 
 def start():
