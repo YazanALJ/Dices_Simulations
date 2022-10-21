@@ -1,5 +1,7 @@
 from random import randint
 
+# Idea 1: print a theoritical probability of a given score, this will require using a formula using the binomial distribution
+
 
 def fetch_user_input():
     nb_sims = int(input("Choose the number of simulations "))
