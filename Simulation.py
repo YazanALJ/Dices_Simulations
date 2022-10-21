@@ -1,8 +1,6 @@
 from random import randint
+from scipy.special import binom
 
-
-# TODO print a theoretical probability of a given score, this will require using a formula using the binomial
-#  distribution
 
 def fetch_user_input():
     nb_sims = int(input("Choose the number of simulations "))
@@ -17,6 +15,13 @@ def fetch_user_input():
     while dice_faces <= 0:
         dice_faces = int(input("Choose a positive number of dice faces... "))
     return nb_sims, nb_dice, dice_faces
+
+
+def compute_actual_probability(tot_sum, nb_dice, faces):
+    res = 0
+    for k in range(int((tot_sum - nb_dice) / faces) + 1):
+        res += (-1) ** k * binom(nb_dice, k) * binom((tot_sum - faces) * (k - 1), nb_dice - 1)
+    return res * (1 / faces ** nb_dice)
 
 
 def throw_n_dice(nb_dice, die_faces):
@@ -42,7 +47,8 @@ def dice_master(nb_sims, nb_dice, die_faces):
             nb_of_total_throws += throws_until_obtainement(nb_dice, posbl_roll, die_faces)
         av_num_trws = nb_of_total_throws / nb_sims
         print(f"The average number of throws required to have a score of {posbl_roll} is "
-              f"{av_num_trws:.1f} which corresponds to {(1 / av_num_trws):.10%}")
+              f"{av_num_trws:.1f} which corresponds to {(1 / av_num_trws):.5%} in contract the the actual "
+              f"probability of {compute_actual_probability(posbl_roll, nb_dice, die_faces):.5%}")
 
 
 def start():
