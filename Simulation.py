@@ -4,15 +4,15 @@ from random import randint
 def fetch_user_input():
     nb_sims = int(input("Choose the number of simulations "))
     while nb_sims <= 0:
-        nb_sims = int(input("Choose a positive number of simulations.. "))
+        nb_sims = int(input("Choose a positive number of simulations... "))
 
     nb_dice = int(input("Choose the number of dice "))
     while nb_dice <= 0:
-        nb_dice = int(input("Choose a positive number of dice.. "))
+        nb_dice = int(input("Choose a positive number of dice... "))
 
     dice_faces = int(input("Choose the number of die faces "))
     while dice_faces <= 0:
-        dice_faces = int(input("Choose a positive number of dice faces.. "))
+        dice_faces = int(input("Choose a positive number of dice faces... "))
     return nb_sims, nb_dice, dice_faces
 
 
