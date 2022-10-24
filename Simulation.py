@@ -25,6 +25,13 @@ def compute_actual_probability(tot_sum, nb_dice, faces):
 
 
 def throw_n_dice(nb_dice, die_faces):
+    """
+    Throws nb_dice dices, each dice having die_faces faces and returns the sum of the roll.
+
+    :param nb_dice: number of dice
+    :param die_faces: die faces
+    :return: int
+    """
     dice_roll_sum = 0
     for NBD in range(1, nb_dice + 1):
         dice_roll_sum += randint(1, die_faces)
@@ -46,9 +53,9 @@ def dice_master(nb_sims, nb_dice, die_faces):
         for sim in range(nb_sims):
             nb_of_total_throws += throws_until_obtainement(nb_dice, posbl_roll, die_faces)
         av_num_trws = nb_of_total_throws / nb_sims
-        print(f"The average number of throws required to have a score of {posbl_roll} is "
-              f"{av_num_trws:.1f} which corresponds to {(1 / av_num_trws):.5%} in contrast the the actual "
-              f"probability of {compute_actual_probability(posbl_roll, nb_dice, die_faces):.5%}")
+        print(f"The average number of throws required to have a score of {posbl_roll: <2} is "
+              f"{av_num_trws: <10.1f} which corresponds to {(1 / av_num_trws): <9.4%} in contrast the the actual "
+              f"probability of {compute_actual_probability(posbl_roll, nb_dice, die_faces):.4%}")
 
 
 def start():
