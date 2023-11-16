@@ -61,7 +61,7 @@ def throw_n_dice(nb_dice: int, die_faces: int) -> int:
 
 def throws_until_obtainment(nb_dice: int, desired_roll: int, die_faces: int) -> int:
     """
-    Throws dice until a desired roll is obtained, and returns the number of throws required to obtain it.
+    Keeps throwing dice until a desired roll is obtained, and returns the number of throws required to obtain it.
 
     Args:
         nb_dice: The number of dice to throw.
